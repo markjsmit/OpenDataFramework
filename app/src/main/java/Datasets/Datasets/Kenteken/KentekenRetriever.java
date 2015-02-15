@@ -10,7 +10,7 @@ import OpenData.OpenData.UrlParser.QueryString;
 /**
  * Created by Mark on 15-2-2015.
  */
-//test
+
 @OpenDataRetriever(Url="https://api.datamarket.azure.com/opendata.rdw/VRTG.Open.Data/v1/KENT_VRTG_O_DAT",Format= XML.class, MainEntity= Datasets.Datasets.Kenteken.MainEntity.class, UrlParser = QueryString.class)
 public class KentekenRetriever extends OpenData.OpenData.Abstract.Retriever<KentekenRetriever>{
     public KentekenRetriever(){}
