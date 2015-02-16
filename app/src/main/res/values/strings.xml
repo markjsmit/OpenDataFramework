@@ -3,6 +3,7 @@
 
     <string name="app_name">OpenDataFramework</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Rdw gegevens</string>
+    <string name="title_activity_rdw">RDW</string>
 
 </resources>

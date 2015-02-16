@@ -1,5 +1,6 @@
 package mark.opendata.opendataframework;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +9,6 @@ import android.widget.TextView;
 
 import Datasets.Datasets.Postcode.MainEntity;
 import Datasets.Datasets.Postcode.PostcodeRetriever;
-import OpenData.OpenData.Abstract.Retriever;
 import OpenData.OpenDataFactory;
 
 
@@ -21,6 +21,8 @@ public class TestForm extends ActionBarActivity {
         setContentView(R.layout.activity_test_form);
         TextView plaatsnaambox = (TextView) findViewById(R.id.PlaatsnaamBox);
         TextView straatnaambox = (TextView) findViewById(R.id.StraatnaamBox);
+        TextView postcodebox=(TextView)findViewById(R.id.PostcodeBox);
+        TextView huisnummerbox=(TextView)findViewById(R.id.HuisNrBox);
 
         PostcodeRetriever retriever = (PostcodeRetriever)OpenDataFactory.GetRetriever(PostcodeRetriever.class);
         retriever.Huisnummer="39";
@@ -30,6 +32,8 @@ public class TestForm extends ActionBarActivity {
    if(entity.status.equals("ok")) {
             plaatsnaambox.setText(entity.Details.get(0).Stad);
             straatnaambox.setText(entity.Details.get(0).Straat);
+            postcodebox.setText(retriever.Postcode);
+            huisnummerbox.setText(retriever.Huisnummer);
         }
     }
 
@@ -50,6 +54,8 @@ public class TestForm extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, RDW.class);
+            startActivity(intent);
             return true;
         }
 

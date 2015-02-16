@@ -1,5 +1,8 @@
 package Datasets.Datasets.Kenteken;
 
+import java.util.ArrayList;
+
+import OpenData.OpenData.Annotations.OpenDataCollection;
 import OpenData.OpenData.Annotations.OpenDataEntity;
 import OpenData.OpenData.Annotations.OpenDataField;
 
@@ -8,6 +11,6 @@ import OpenData.OpenData.Annotations.OpenDataField;
  */
 @OpenDataEntity
 public class MainEntity {
-     @OpenDataField(Name="feed")
-     public Feed feed=new Feed();
+    @OpenDataCollection(Name = "entry", Type = KentekenInfo.class)
+    public ArrayList<KentekenInfo> Kentekeninfo = new ArrayList<KentekenInfo>();
 }
