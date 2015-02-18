@@ -8,6 +8,7 @@ import OpenData.OpenData.*;
 
 /**
  * Created by Mark on 1-2-2015.
+ * Deze klasse representeert de verbinding met de open data service. Door de veldinhoud te veranderen kunnen er filters worden toegepast.
  */
 @OpenDataRetriever(Url="http://api.postcodedata.nl/v1/postcode/",Format= JSON.class, MainEntity=MainEntity.class, UrlParser = QueryString.class)
 public class PostcodeRetriever extends OpenData.OpenData.Abstract.Retriever<MainEntity> {

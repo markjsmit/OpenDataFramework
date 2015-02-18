@@ -7,6 +7,7 @@ import OpenData.OpenData.Annotations.OpenDataField;
 
 /**
  * Created by Mark on 15-2-2015.
+ * Deze klasse dient als domein object voor de gedetaileerde kenteken info. Deze class haalt een aantal velden uit het xml bestand doormiddel van de annotaties.
  */
 @OpenDataEntity()
 public class KentekenInfo {

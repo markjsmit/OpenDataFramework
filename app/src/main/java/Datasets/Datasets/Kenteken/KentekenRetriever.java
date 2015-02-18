@@ -9,6 +9,8 @@ import OpenData.OpenData.UrlParser.QueryString;
 
 /**
  * Created by Mark on 15-2-2015.
+ * Deze klasse representeert de verbinding met de open data service. Door de veldinhoud te veranderen kunnen er filters worden toegepast.
+ * Doormiddel van annotaties word aangegeven op welke manier de informatie moet worden opgehaald en waar vandaan
  */
 
 @OpenDataRetriever(Url="https://api.datamarket.azure.com/opendata.rdw/VRTG.Open.Data/v1/KENT_VRTG_O_DAT",Format= XML.class, MainEntity= Datasets.Datasets.Kenteken.MainEntity.class, UrlParser = QueryString.class)

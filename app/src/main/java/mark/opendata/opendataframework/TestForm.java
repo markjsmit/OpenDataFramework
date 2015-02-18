@@ -5,36 +5,68 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import Datasets.Datasets.Postcode.MainEntity;
 import Datasets.Datasets.Postcode.PostcodeRetriever;
 import OpenData.OpenDataFactory;
 
-
+//testcase postcodes ophalen
 public class TestForm extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //layout instellen
         setContentView(R.layout.activity_test_form);
+
+        //basis informatie isntellen
+        ((EditText) findViewById(R.id.PostcodeTekst)).setText("7823sc");
+        ((EditText) findViewById(R.id.HuisnummerTekst)).setText("39");
+
+        //data ophalen
+        UpdateInformation();
+
+        //knopje koppelen aan het ophalen van data
+        ((Button)findViewById(R.id.PostcodeButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UpdateInformation();
+            }
+        });
+
+
+
+    }
+
+    
+    private void UpdateInformation(){
+
+        //alle tekstfields in variablen zetten
         TextView plaatsnaambox = (TextView) findViewById(R.id.PlaatsnaamBox);
         TextView straatnaambox = (TextView) findViewById(R.id.StraatnaamBox);
-        TextView postcodebox=(TextView)findViewById(R.id.PostcodeBox);
-        TextView huisnummerbox=(TextView)findViewById(R.id.HuisNrBox);
+        EditText postcodebox = (EditText) findViewById(R.id.PostcodeTekst);
+        EditText huisnummerbox = (EditText) findViewById(R.id.HuisnummerTekst);
+        try {
+            //postcode retriever aanmaken
+            PostcodeRetriever retriever = (PostcodeRetriever) OpenDataFactory.GetRetriever(PostcodeRetriever.class);
+            //filters op huisnummer en postcode zetten
+            retriever.Huisnummer = huisnummerbox.getText().toString();
+            retriever.Postcode = postcodebox.getText().toString();
 
-        PostcodeRetriever retriever = (PostcodeRetriever)OpenDataFactory.GetRetriever(PostcodeRetriever.class);
-        retriever.Huisnummer="39";
-        retriever.Postcode="7823sc";
-        MainEntity entity= retriever.RetrieveData();
+            //de data ophalen
+            MainEntity entity = retriever.RetrieveData();
+            if (entity.status.equals("ok")) {
 
-   if(entity.status.equals("ok")) {
-            plaatsnaambox.setText(entity.Details.get(0).Stad);
-            straatnaambox.setText(entity.Details.get(0).Straat);
-            postcodebox.setText(retriever.Postcode);
-            huisnummerbox.setText(retriever.Huisnummer);
-        }
+                //en veldjes invullen
+                plaatsnaambox.setText(entity.Details.get(0).Stad);
+                straatnaambox.setText(entity.Details.get(0).Straat);
+            }
+        }catch(Exception ex){}
     }
 
 

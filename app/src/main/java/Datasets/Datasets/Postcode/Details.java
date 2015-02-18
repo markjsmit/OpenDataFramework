@@ -3,7 +3,10 @@ package Datasets.Datasets.Postcode;
 
 import OpenData.OpenData.Annotations.OpenDataEntity;
 import OpenData.OpenData.Annotations.OpenDataField;
-
+/**
+ * Created by Mark on 1-2-2015.
+ * Deze klasse dient als domein object voor de gedetaileerde postcode info. Deze class haalt een aantal velden uit het json bestand doormiddel van de annotaties.
+ */
 @OpenDataEntity
 public class Details {
     public Details(){}
